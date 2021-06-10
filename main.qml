@@ -2,10 +2,15 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 
+import TableModel 0.1
 Window {
     visible: true
     width: 600 //для пк
     height: 1024 //для пк
+
+    TableModel{
+            id:theModel
+        }
 
 /*
     TableView {
@@ -92,42 +97,73 @@ Window {
     }
     */
 
-    TableView {
 
+    TableView{
         anchors.centerIn: parent
-
+        //rowSpacing: 1
+        width: 500
+        height: 600
         TableViewColumn {
             id: tvc
             title: "№"
             role: "one"
-            width: 50
-            horizontalAlignment: 1
+            width: 100
+            //horizontalAlignment: 1
+            //visible: false
         }
-        TableViewColumn {title: "Gl"; role: "two"; width: 50}
-        TableViewColumn {title: "Lc"; role: "three"; width: 50}
-        TableViewColumn {title: "Штрих-код"; role: "fo"; width: 100}
+        TableViewColumn {title: "Gl"; role: "two"; width: 100}
+        TableViewColumn {title: "Lc"; role: "three"; width: 100}
+        TableViewColumn {
+            title: "Штрих-код"
+            role: "fo"
+            width: 110
+           //horizontalAlignment: 2
+        }
 
-        itemDelegate: Item {
+        itemDelegate:
             Rectangle {
-                anchors.top: tvc.bottom
+                id:rec
                 anchors.topMargin: 10
-                width: 50
-                height: 20
+                width: 110
+                //height: 50
+                implicitHeight: 50
+
                 border {
+                    //color: "white"
                     color: "black"
                     width: 1
                 }
 
                 Text {
-                    anchors.centerIn: parent
+                    anchors.centerIn: rec
                     renderType: Text.NativeRendering
+                    font.pixelSize: 16
                     text: styleData.value
                 }
+
+        }
+
+
+        headerDelegate:
+            Rectangle{
+            width: 110
+            height: 40
+            border.color: "black"
+            Text
+            {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: styleData.value
+                font.pixelSize: 20
+                color: "#666666"
             }
         }
 
         model: theModel
 
+
+
     }
+
 }
 
