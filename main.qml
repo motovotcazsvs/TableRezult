@@ -14,51 +14,38 @@ Window {
         id: theModel
     }
 
-    TableView {
-        /*
-        Rectangle{
-            id: str1
-            width: 440
-            height: 45
-            //anchors.top: hedrec.bottom
-            //y: 100
-            //anchors.left: tv.left
-            border.color: "green"
-            color: "transparent"
-        }
+    Label {
+        id: type_prob
+        text: "Cыворотка"
+        anchors.top: parent.top
+        anchors.topMargin: 50
+        anchors.right: tv.right
+        anchors.rightMargin: 30
+        font.pixelSize: 27
+    }
 
-        Rectangle {
-            id: str2
-            width: 440
-            height: 45
-            anchors.top: str1.bottom
-            anchors.topMargin: 20
-            //anchors.top: hedrec.bottom
-            //y: 100
-            //anchors.left: tv.left
-            border.color: "green"
-            color: "transparent"
-        }
-*/
+    TableView {
+        id: tv
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: type_prob.bottom
+        anchors.topMargin: 30
+        width: 440
+        height: 670
+        frameVisible: false
+
         Column {
-            spacing: 20
+            spacing: 10
             Repeater {
-                model: tv.rowCount
+                model: tv.rowCount + 1
                 Rectangle {
-                    width: 440; height: 45
-                    border.width: 1
-                    border.color: "green"
-                    color: "transparent"
+                    width: 440
+                    height: 50
+                    color: "grey"
+                    opacity: 0.1
                 }
             }
         }
 
-        id: tv
-        anchors.centerIn: parent
-        //rowSpacing: 1
-        width: 440
-        height: 670
-        frameVisible: false
 
         TableViewColumn {
             id: tvc
@@ -116,8 +103,10 @@ Window {
 */
             Text {
                 anchors.bottom: rec.bottom
+                anchors.bottomMargin: 12
                 anchors.horizontalCenter: rec.horizontalCenter
                 renderType: Text.NativeRendering
+                color: "black"
                 font.pixelSize: 22
                 text: styleData.value
             }
@@ -127,15 +116,20 @@ Window {
             width: 120
             height: 50
             //border.color: "black"
+            //border.width: 1
             //border.color: "white"
+            //color: "#004242"
+            color: "#A2ADD0"
+            opacity: 0.6
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: styleData.value
                 font.pixelSize: 27
-                color: "#666666"
+                color: "black"
             }
         }
+
         model: theModel
     }
 
