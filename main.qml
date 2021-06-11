@@ -42,7 +42,8 @@ Window {
             //width: 150
             height: 60
             //anchors.topMargin: 10
-            border.color: "transparent"
+            //border.color: "transparent"
+            border.color: "black"
 
             Rectangle {
                 id: r2
