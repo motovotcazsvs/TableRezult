@@ -15,10 +15,51 @@ Window {
     }
 
     TableView {
+        /*
+        Rectangle{
+            id: str1
+            width: 440
+            height: 45
+            //anchors.top: hedrec.bottom
+            //y: 100
+            //anchors.left: tv.left
+            border.color: "green"
+            color: "transparent"
+        }
+
+        Rectangle {
+            id: str2
+            width: 440
+            height: 45
+            anchors.top: str1.bottom
+            anchors.topMargin: 20
+            //anchors.top: hedrec.bottom
+            //y: 100
+            //anchors.left: tv.left
+            border.color: "green"
+            color: "transparent"
+        }
+*/
+        Column {
+            spacing: 20
+            Repeater {
+                model: tv.rowCount
+                Rectangle {
+                    width: 440; height: 45
+                    border.width: 1
+                    border.color: "green"
+                    color: "transparent"
+                }
+            }
+        }
+
+        id: tv
         anchors.centerIn: parent
         //rowSpacing: 1
-        width: 500
-        height: 720
+        width: 440
+        height: 670
+        frameVisible: false
+
         TableViewColumn {
             id: tvc
             title: "№"
@@ -28,6 +69,8 @@ Window {
             //visible: false
 
         }
+
+
         TableViewColumn {title: "Gl"; role: "two"; width: 100}
         TableViewColumn {title: "Lc"; role: "three"; width: 100}
         TableViewColumn {
@@ -43,27 +86,14 @@ Window {
             height: 60
             //anchors.topMargin: 10
             //border.color: "transparent"
-            border.color: "black"
-
-            Rectangle {
-                id: r2
-                height: 15
-                anchors.top: r.top
-                z: 1
-                border.color: "red"
-            }
-            Rectangle {
-                id: r3
-                height: 45
-                border.color: "black"
-            }
-
-
-        }//
+            //border.color: "red"
+            //border.color: "white"
+        }
         itemDelegate: Rectangle {
             id:rec
             //anchors.topMargin: 50
             width: 150
+            border.color: "transparent"
             //height: 50
             //implicitHeight: 20
             /*border {
@@ -71,18 +101,19 @@ Window {
                 color: "black"
                 width: 1
             }*/
+/*
             Rectangle {
                 width: 155
                 height: 15
                 //implicitHeight: 20
-                /*
-                border {
-                    color: "white"
-                    //color: "black"
-                    width: 1
-                }*/
-            }
 
+                border {
+                    //color: "white"
+                    color: "black"
+                    width: 1
+                }
+            }
+*/
             Text {
                 anchors.bottom: rec.bottom
                 anchors.horizontalCenter: rec.horizontalCenter
@@ -92,10 +123,11 @@ Window {
             }
         }
         headerDelegate: Rectangle {
+            id: hedrec
             width: 120
             height: 50
             //border.color: "black"
-            border.color: "white"
+            //border.color: "white"
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -106,5 +138,6 @@ Window {
         }
         model: theModel
     }
+
 }
 
