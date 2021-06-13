@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>TableRezult1.qml</file>
     </qresource>
 </RCC>
