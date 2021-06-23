@@ -28,9 +28,9 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: type_prob.bottom
         anchors.topMargin: 30
-        width: 440
-        height: 670
-        frameVisible: false
+        width: 500
+        height: 740
+        frameVisible: true
         
         Column {
             spacing: 10
@@ -88,46 +88,51 @@ Item {
             id: tvc
             title: "№"
             role: "one"
-            width: 70
+            width: 75
         }      
-        TableViewColumn {title: "Gl"; role: "two"; width: 100}
-        TableViewColumn {title: "Lc"; role: "three"; width: 100}
+        TableViewColumn {title: "Gl"; role: "two"; width: 105}
+        TableViewColumn {title: "Lc"; role: "three"; width: 105}
         TableViewColumn {
             title: qsTr("Штрих-код")
             role: "fo"
-            width: 170
+            width: 213
+
         }
 
         rowDelegate: Rectangle{
             id: r
-            height: 60
+            height: 70
         }
 
         itemDelegate: Rectangle {
             id:rec
-            width: 150          
+            width: 150
+            border.color: "green"
+
             Text {
                 anchors.bottom: rec.bottom
-                anchors.bottomMargin: 12
+                anchors.bottomMargin: 22
                 anchors.horizontalCenter: rec.horizontalCenter
                 renderType: Text.NativeRendering
                 color: "black"
-                font.pixelSize: 22
+                font.pixelSize: 35
                 text: styleData.value              
             }
         }
 
         headerDelegate: Rectangle {
             id: hedrec
-            width: 120
-            height: 50
+            width: 110
+            height: 70
             opacity: 0.6
+            border.color: "red"//для отображения сетки шапки
 
             Text {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
+                //anchors.verticalCenter: parent.verticalCenter
+                //anchors.horizontalCenter: parent.horizontalCenter
+                anchors.centerIn: parent
                 text: styleData.value
-                font.pixelSize: 27
+                font.pixelSize: 37
                 color: "black"
             }
         }
