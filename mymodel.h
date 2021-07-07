@@ -13,19 +13,21 @@ struct SimpleData
     QString m_two;
     QString m_three;
     QString m_fo;
+    QString m_five;
 };
 
 enum Role{
     OneRole = Qt::UserRole,
     TwoRole,
     ThreeRole,
-    Fo
+    FoRole,
+    FiveRole
 };
 class MyModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    explicit MyModel();//MyData *the_data);
+    explicit MyModel();
     int rowCount(const QModelIndex & parent = QModelIndex()) const Q_DECL_OVERRIDE;
     int columnCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
@@ -34,7 +36,6 @@ public:
 signals:
 
 public slots:
-    void theDataChanged();
 
 private:
    QList<SimpleData> m_the_data;

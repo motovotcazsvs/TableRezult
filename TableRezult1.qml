@@ -40,8 +40,47 @@ Item {
                 width: 500
                 height: 60
                 radius: 20
-                color: "#A2ADD0"
-                opacity: 0.4
+                color: "#F4B12A"
+
+                Text {
+                    id: text_hed2
+                    anchors.left: hed.left
+                    anchors.leftMargin: 100
+                    anchors.verticalCenter: hed.verticalCenter
+                    text: "№"
+                    font.pixelSize: 37
+                    color: "white"
+                }
+
+                Text {
+                    id: text_hed3
+                    anchors.left: text_hed2.right
+                    anchors.leftMargin: 55
+                    anchors.verticalCenter: hed.verticalCenter
+                    text: "GL"
+                    font.pixelSize: 37
+                    color: "white"
+                }
+
+                Text {
+                    id: text_hed4
+                    anchors.left: text_hed3.right
+                    anchors.leftMargin: 75
+                    anchors.verticalCenter: hed.verticalCenter
+                    text: "LC"
+                    font.pixelSize: 37
+                    color: "white"
+                }
+
+                Text {
+                    id: text_hed5
+                    anchors.left: text_hed4.right
+                    anchors.leftMargin: 50
+                    anchors.verticalCenter: hed.verticalCenter
+                    text: "Штрих-код"
+                    font.pixelSize: 37
+                    color: "white"
+                }
             }
             
             Repeater {
@@ -83,11 +122,30 @@ Item {
                 }
             }
         }
-             
-        TableViewColumn {id: col1; title: qsTr("№"); role: "one"; width: 80}
-        TableViewColumn {id: col2; title: qsTr("Gl"); role: "two"; width: 115}
-        TableViewColumn {id: col3; title: qsTr("Lc"); role: "three"; width: 115}
-        TableViewColumn {id: col4; title: qsTr("Штрих-код"); role: "fo"; width: 188}
+
+        //TableViewColumn {id: col1; role: "one"; width: 80}
+        TableViewColumn {
+            id: col1
+            role: "one"
+            width: 80
+            delegate: Rectangle {
+                id: reccc
+                Text {
+                    anchors.bottom: reccc.bottom
+                    anchors.bottomMargin: 22
+                    anchors.horizontalCenter: reccc.horizontalCenter
+                    renderType: Text.NativeRendering
+                    text: styleData.value
+                    color: "grey"
+                    font.pixelSize: 35
+                }
+            }
+        }
+
+        TableViewColumn {id: col2; title: qsTr("№"); role: "two"; width: 80}
+        TableViewColumn {id: col3; title: qsTr("Gl"); role: "three"; width: 115}
+        TableViewColumn {id: col4; title: qsTr("Lc"); role: "fo"; width: 115}
+        TableViewColumn {id: col5; title: qsTr("Штрих-код"); role: "five"; width: 188}
 
         rowDelegate: Rectangle {
             id: r
@@ -97,7 +155,7 @@ Item {
         itemDelegate: Rectangle {
             id:rec
             //width: 180
-            //border.color: "green"
+            border.color: "green"
 
             Text {
                 anchors.bottom: rec.bottom
@@ -112,17 +170,19 @@ Item {
 
         headerDelegate: Rectangle {
             id: hedrec
+            z: 1
             width: 100
             height: 70
-            opacity: 0.6
-            //border.color: "red"//для отображения сетки шапки
+            //opacity: 0.6
+            color: "white"
+            border.color: "red"//для отображения сетки шапки
 
             Text {
                 y: 6
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: styleData.value
                 font.pixelSize: 37
-                color: "black"
+                color: "white"
             }
         }
 
